@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paintings - Art Gallery</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <script>
+        // Check login status and display email
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('check_login.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.email) { 
+                        // Update the profile menu with logged-in user's email
+                        const profileOptions = document.getElementById('profileOptions');
+                        if (profileOptions) {
+                            profileOptions.innerHTML = `
+                                <span>${data.email}</span>
+                                <a href="logout.php">Logout</a>
+                            `;
+                        }
+                    } else {
+                        // Redirect to login page if not logged in
+                        window.location.href = 'http://localhost/artG/login.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Login check failed:', error);
+                    window.location.href = 'http://localhost/artG/login.html';
+                });
+        });
+    </script>
+    
+
+</head>
+<body>
+    <header>
+        <h1 class="main-heading">Art Gallery</h1>
+
+        <div class="container">
+        
+            <nav>
+                <ul>
+                    <li><a href="Painting.html">Paintings</a></li>
+                    <li><a href="Sculptures.html">Sculptures</a></li>
+                    <li><a href="Photo.html">Photography</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+
+           <!--  Profile Icon with Dropdown Menu -->
+           <div class="profile-menu">
+            <i class="fas fa-user-circle profile-icon" onclick="toggleMenu()"></i>
+            <div class="profile-options" id="profileOptions">
+                <a href="http://localhost/artG/register1.html">Register</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    
+    </header>
+
+    <main>
+       <!-- Paintings Section -->
+       <section id="gallery" class="gallery">
+        <h2>Paintings</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="art1.jpeg" alt="Artwork 1">
+                <h3>Hope</h3>
+                <p>Jitendra Sutar</p>
+                <p class="price">$500</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="art2.jpeg" alt="Artwork 2">
+                <h3>Camel</h3>
+                <p>Ramkrishna.T</p>
+                <p class="price">$750</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="art3.jpeg" alt="Artwork 3">
+                <h3>Fishy</h3>
+                <p>Sia.T</p>
+                <p class="price">$800</p>
+            </div>
+            <div class="gallery-item">
+                <img src="art4.jpeg" alt="Artwork 4">
+                <h3>Support</h3>
+                <p>Shreya.P</p>
+                <p class="price">$600</p>
+            </div>
+            <div class="gallery-item">
+                <img src="art5.jpeg" alt="Artwork 5">
+                <h3>Rising Star</h3>
+                <p>Abhilash Singh</p>
+                <p class="price">$600</p>
+            </div>
+            <div class="gallery-item">
+                <img src="art6.jpeg" alt="Artwork 6">
+                <h3>Curated Gift</h3>
+                <p>Mohit Joshi</p>
+                <p class="price">$500</p>
+            </div>
+            <div class="gallery-item">
+                <img src="art7.jpeg" alt="Artwork 7">
+                <h3>Spiritual</h3>
+                <p>Rajan Mishra</p>
+                <p class="price">$400</p>
+            </div>
+            <div class="gallery-item">
+                <img src="art8.jpg" alt="Artwork 8">
+                <h3>Scenery</h3>
+                <p>Chandrashekhar .P</p>
+                <p class="price">$400</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="art9.jpeg" alt="Artwork 8">
+                <h3>Divine</h3>
+                <p>Yashwantrao. B</p>
+                <p class="price">$400</p>
+            </div>
+        </section>
+         <!-- About Us Section -->
+         <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to our Art Gallery! We are dedicated to showcasing a diverse range of artworks from talented artists around the world. Our mission is to promote creativity and inspire art appreciation in our community.</p>
+            <p>Whether you're an art enthusiast, a collector, or simply looking to explore new artistic expressions, our gallery offers something for everyone. Join us in celebrating the beauty of art!</p>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact">
+            <div class="contact-container">
+                <h2>Contact Us</h2>
+                <p>Have questions? Feel free to reach out to us!</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Our Location</h3>
+                <p>Thakur Art Gallery, Thakur Village, Kandivali (E), Mumbai - 400 101</p>
+                <p>Tel: 2887 0627, 2846 2565</p>
+                <p>Fax: 2886 8822</p>
+            </div>
+            <div class="footer-section">
+                <h3>Top Categories</h3>
+                <ul>
+                    <li><a href="Painting.html">Paintings</a></li>
+                    <li><a href="Sculptures.html">Sculptures</a></li>
+                    <li><a href="Photo.html">Photography</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/tcscmumbai"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/codingclubcs/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/tcscmumbai"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/c/ThakurCollegeofScienceCommerce"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Thakur Art Gallery ; All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

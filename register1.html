@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .particle {
+            position: absolute;
+            opacity: 0;
+            animation: particles 3s ease-in infinite;
+        }
+        @keyframes particles {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+        .input-group input:focus ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #22d3ee;
+        }
+        .input-group input:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+        }
+        .floating-label {
+            transform-origin: left top;
+            transition: all 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-800 flex items-center justify-center p-4">
+
+    <!-- Animated background particles -->
+    <div id="particles" class="fixed inset-0 pointer-events-none"></div>
+    
+    <!-- Background Effects -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-20 left-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-cyan-400/5 rounded-full blur-xl"></div>
+    </div> 
+
+    <div class="w-full max-w-xl relative">
+        <!-- Logo Section -->
+        <div class="text-center mb-8">
+            <h1 class="font-serif text-5xl text-cyan-400 italic">
+                Art Gallery
+            </h1>
+            <p class="mt-2 text-gray-400 font-light">Join our artistic community</p>
+        </div>
+ 
+        <!-- Registration Form -->
+        <div class="backdrop-blur-lg bg-gray-900/50 rounded-2xl shadow-2xl p-8 border border-gray-700">
+            <form id="register" action="register.php" method="POST" class="space-y-6">
+                <!-- Hidden input for artist type -->
+                <!-- <input type="hidden" id="artistType" name="artistType" value=""> -->
+
+                <!-- Name Fields -->
+                <div class="grid grid-cols-1">
+                    <div class="input-group relative">
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder=" "
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 
+                                   text-gray-100 placeholder-transparent
+                                   focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 
+                                   outline-none transition-all"
+                            required
+                        >
+                        <label for="fullName" class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none">
+                            Full Name
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="input-group relative">
+                    <input
+                        type="email"                                                    
+                        id="email"
+                        name="email"
+                        placeholder=" "
+                        class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 
+                               text-gray-100 placeholder-transparent
+                               focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 
+                               outline-none transition-all"
+                        required
+                    >
+                    <label for="email" class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none">
+                        Email Address
+                    </label>
+                </div>
+
+                <!-- Password Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="input-group relative">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder=" "
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 
+                                   text-gray-100 placeholder-transparent
+                                   focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 
+                                   outline-none transition-all"
+                            required
+                        >
+                        <label for="password" class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none">
+                            Password
+                        </label>
+                    </div>
+
+                    <div class="input-group relative">
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder=" "
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 
+                                   text-gray-100 placeholder-transparent
+                                   focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 
+                                   outline-none transition-all"
+                            required
+                        >
+                        <label for="confirmPassword" class="floating-label absolute left-4 top-3 text-gray-400 pointer-events-none">
+                            Confirm Password
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Artist Type Selection
+                <div class="space-y-2">
+                    <label class="block text-sm font-light text-gray-300">I am a:</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" 
+                                class="px-4 py-2 rounded-lg border border-cyan-400/30 text-cyan-400
+                                       hover:bg-cyan-400/10 focus:bg-cyan-400/10 transition-all
+                                       text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
+                                onclick="setArtistType('creator')">
+                            Art Creator
+                        </button>
+                        <button type="button"
+                                class="px-4 py-2 rounded-lg border border-cyan-400/30 text-cyan-400
+                                       hover:bg-cyan-400/10 focus:bg-cyan-400/10 transition-all
+                                       text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
+                                onclick="setArtistType('collector')">
+                            Art Collector
+                        </button>
+                    </div>
+                </div> -->
+
+                <!-- Terms and Conditions -->
+                <div class="flex items-center space-x-2">
+                    <input type="checkbox" id="terms" name="terms" required class="w-4 h-4 rounded border-gray-700 bg-gray-800/50 text-cyan-400 focus:ring-cyan-400/20 focus:ring-2">
+                    <label for="terms" class="text-sm text-gray-400">
+                        I agree to the <a href="#" class="text-cyan-400 hover:text-cyan-300">Terms and Conditions</a>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 py-3 px-6 
+                           rounded-lg font-medium hover:from-cyan-300 hover:to-cyan-400
+                           focus:outline-none focus:ring-2 focus:ring-cyan-400/20
+                           transform transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                    Join the Gallery
+                </button>
+
+                <div class="text-center mt-4">
+                    <a href="http://localhost/artG/login.html" class="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+                        Already have an account? Sign in
+                    </a>
+                </div>
+            </form>
+        </div>
+ 
+        <!-- Footer Text -->
+        <div class="text-center mt-6">
+            <p class="text-gray-500 text-sm font-light">
+                Where creativity finds its home
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.backgroundColor = '#22d3ee';
+                particle.style.borderRadius = '50%';
+                
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Handle artist type selection
+        function setArtistType(type) {
+            const buttons = document.querySelectorAll('[onclick^="setArtistType"]');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-cyan-400/10');
+            });
+            event.target.classList.add('bg-cyan-400/10');
+            document.getElementById('artistType').value = type;
+        }
+
+        // Form submission handler
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate passwords match
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Please accept the terms and conditions');
+                return;
+            }
+
+            // Check if artist type is selected
+           // const artistType = document.getElementById('artistType').value;
+          //  if (!artistType) {
+               // alert('Please select whether you are an Art Creator or Art Collector');
+           //     return;
+        //    }
+
+            // Submit the form data using fetch
+            fetch('register.php', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Registration successful!');
+                    window.location.href = 'http://localhost/artG/login.html';
+                } else {
+                    alert(data.message || 'Registration failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+</html>
